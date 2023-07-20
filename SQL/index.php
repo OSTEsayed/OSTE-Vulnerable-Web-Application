@@ -145,37 +145,19 @@
         </ul>
     </header>
 
-    <h1>List of XSS vulnerable pages</h1>
+    <h1>List of SQL vulnerable pages</h1>
     <div class="button-container">
-        <button class="button" onclick="location.href='page1.php';">XSS page 1</button>
-        <button class="button" onclick="location.href='page2.php';">XSS page 2</button>
-        <button class="button" onclick="location.href='page3.php';">XSS page 3</button>
-        <button class="button" onclick="location.href='page4.php';">XSS page 4</button>
-        <button class="button" onclick="location.href='page5.php';">XSS page 5</button>
-        <button class="button" onclick="location.href='page6.php';">XSS page 6</button>
-        <button class="button" onclick="location.href='page7.php';">XSS page 7</button>
-        <button class="button" onclick="location.href='page8.php';">XSS page 8</button>
+        <button class="button" onclick="location.href='page1.php';">SQL page 1</button>
+        <button class="button" onclick="location.href='page2.php';">SQL page 2</button>
+        <button class="button" onclick="location.href='page3.php';">SQL page 3</button>
+        <button class="button" onclick="location.href='page4.php';">SQL page 4</button>
+        <button class="button" onclick="location.href='page5.php';">SQL page 5</button>
+        <button class="button" onclick="location.href='page6.php';">SQL page 6</button>
+        <button class="button" onclick="location.href='page7.php';">SQL page 7</button>
+        <button class="button" onclick="location.href='page8.php';">SQL page 8</button>
 
     </div>
 
 
 </body>
 </html>
-<?php 
-try {
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-
-    // Step 1: Connect to MySQL
-    $conn = new PDO("mysql:host=$servername", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $conn->exec("USE OSTE");
-    $sql = "DELETE FROM comontair";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
-
-?>
