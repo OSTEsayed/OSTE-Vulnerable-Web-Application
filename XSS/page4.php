@@ -133,49 +133,73 @@
         .button:hover {
             background-color: #0056b3;
         }
+        
+        form {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 300px;
+        }
+        label {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <header>
         <img src="../OSTE.svg" alt="Logo">
+        <a href="index.php"> <img style="width:25px;height:25px;" src="../ico/undo.png" alt="back"></a>
+
         <ul>
-   	     <li><a href="index.php">Home</a></li>
+   	     <li><a href="../index.php">Home</a></li>
             <li><a href="database.php">Database</a></li>
             <li><a href="vulnerabilities.php">Vulnerabilities</a></li>
         </ul>
     </header>
 
-    <h1>List of XSS vulnerable pages</h1>
+    <h1>Greetings, What's your name?</h1>
     <div class="button-container">
-        <button class="button" onclick="location.href='page1.php';">XSS page 1</button>
-        <button class="button" onclick="location.href='page2.php';">XSS page 2</button>
-        <button class="button" onclick="location.href='page3.php';">XSS page 3</button>
-        <button class="button" onclick="location.href='page4.php';">XSS page 4</button>
-        <button class="button" onclick="location.href='page5.php';">XSS page 5</button>
-        <button class="button" onclick="location.href='page6.php';">XSS page 6</button>
-        <button class="button" onclick="location.href='page7.php';">XSS page 7</button>
-        <button class="button" onclick="location.href='page8.php';">XSS page 8</button>
-
+        <form method="post" action="">
+        <label for="inputField">Enter your name:</label>
+        <input type="text" id="inputField" name="username">
+        <button type="submit">Submit</button>
+    </form>
     </div>
-
-
-</body>
-</html>
-<?php 
-try {
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-
-    // Step 1: Connect to MySQL
-    $conn = new PDO("mysql:host=$servername", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $conn->exec("USE OSTE");
-    $sql = "DELETE FROM comontair";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
+<?php
+if(isset($_POST['username'])){
+echo"<h1>Welcome To OSTE Vulnerable web application <3";
+$name = preg_replace( '/<(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i', '', $_POST['username'] );
+echo$name;
+echo"</h1>";
 }
 
 ?>
+
+</body>
+</html>

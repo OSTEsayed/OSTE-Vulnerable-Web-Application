@@ -133,35 +133,70 @@
         .button:hover {
             background-color: #0056b3;
         }
+        
+        form {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 300px;
+        }
+        label {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <header>
         <img src="../OSTE.svg" alt="Logo">
+        <a href="index.php"> <img style="width:25px;height:25px;" src="../ico/undo.png" alt="back"></a>
+
         <ul>
-   	     <li><a href="index.php">Home</a></li>
+   	     <li><a href="../index.php">Home</a></li>
             <li><a href="database.php">Database</a></li>
             <li><a href="vulnerabilities.php">Vulnerabilities</a></li>
         </ul>
     </header>
 
-    <h1>List of XSS vulnerable pages</h1>
+    <h1>Greetings, Tell me a story?</h1>
     <div class="button-container">
-        <button class="button" onclick="location.href='page1.php';">XSS page 1</button>
-        <button class="button" onclick="location.href='page2.php';">XSS page 2</button>
-        <button class="button" onclick="location.href='page3.php';">XSS page 3</button>
-        <button class="button" onclick="location.href='page4.php';">XSS page 4</button>
-        <button class="button" onclick="location.href='page5.php';">XSS page 5</button>
-        <button class="button" onclick="location.href='page6.php';">XSS page 6</button>
-        <button class="button" onclick="location.href='page7.php';">XSS page 7</button>
-        <button class="button" onclick="location.href='page8.php';">XSS page 8</button>
+        <form method="post" action="">
+        <label for="inputField">Enter your Story:*</label>
+        <input type="text" id="inputField2" name="username" required>
 
+        <button type="submit">Submit</button>
+        </form>
+        <form method="post" action="">
+        <button type="submit" name="clear">Clear History</button>
+    </form>
     </div>
+<?php
 
-
-</body>
-</html>
-<?php 
 try {
     $servername = "localhost";
     $username = "root";
@@ -171,11 +206,53 @@ try {
     $conn = new PDO("mysql:host=$servername", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conn->exec("USE OSTE");
-    $sql = "DELETE FROM comontair";
+
+    // Step 2: Fetch messages from the "comontair" table
+    $sql = "SELECT msg FROM comontair";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
+    $messages = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
+if(isset($_POST['clear'])){
+$sql = "DELETE FROM comontair";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+}
+echo"<h1> List of old stories:</h1>";
+        foreach ($messages as $message): 
+	    $message=str_replace( '<script>', '', $message );
+            echo"<li>'.$message.'</li>";
+        endforeach; 
+
+if(isset($_POST['username'])){
+try {
+
+    // Step 2: Prepare and execute the SQL statement with parameter binding
+    $sql = "INSERT INTO comontair (msg) VALUES (:username)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':username', $_POST['username'], PDO::PARAM_STR);
+    $stmt->execute();
+
+    // Optionally, you can check if the query was successful
+//    if ($stmt->rowCount() > 0) {
+  //      echo "Data inserted successfully.";
+    //} else {
+      //  echo "Error: Data not inserted.";
+    //}
+
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
 
+echo"<h1>This is your story ! Really? :";
+
+echo"</h1>";
+}
+
 ?>
+
+</body>
+</html>
