@@ -183,13 +183,11 @@
         </ul>
     </header>
 
-    <h1>Greetings, Welcome to the database <3 insert your info</h1>
+    <h1>Greetings, Welcome to the database <3 </h1>
     <div class="button-container">
         <form method="post" action="">
-        <label for="inputField">Your name?:*</label>
-        <input type="text" id="inputField2" name="username" required>
-        <label for="inputField2">Your password?:*</label>
-        <input type="text" id="inputField" name="pswd" required>
+        <label for="inputField">guss the id																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												 number of the admin name in db:*</label>
+        <input type="number" id="inputField2" name="number" value=0>
 
         <button type="submit" name="sub">Submit</button>
         </form>
@@ -209,11 +207,25 @@
     	die("Connection failed: " . mysqli_connect_error());
 	} 
   if(isset($_POST["sub"])){
-    $namee=$_POST["username"];
-    $passe=$_POST["pswd"];
+    $namber=$_POST["number"];
     // Step 2: Fetch messages from the "comontair" table
-    $sql = "INSERT INTO user (name,password) VALUES ('$namee','$passe')";
+    $sql = "SELECT * FROM user WHERE name='ADmin'";
 	$result = mysqli_query($conn,$sql);
+		if (mysqli_num_rows($result) > 0) {
+    		while($row = mysqli_fetch_assoc($result)) {
+                        if ($namber ==$row['Id']){
+       			echo "<br> <H1> Correct!! Nice</h1>";
+                        }
+                        else {
+                        echo "<br> <H1> You are bad at this game.</h1>";
+                        
+                        }
+    		}
+		} else {
+    		echo "There's problem of user table make sure you have created it successfully";
+		}
+
+
 }
 
 if(isset($_POST['clear'])){
@@ -221,18 +233,7 @@ if(isset($_POST['clear'])){
 	$result = mysqli_query($conn,$sql1);
 }
 
-$sql3 = "SELECT name FROM user";//String
-		$result = mysqli_query($conn,$sql3);
-		
-		if (mysqli_num_rows($result) > 0) {
-        // output data of each row
-    		while($row = mysqli_fetch_assoc($result)) {
-       			echo $row["name"];
-       			echo "<br>";
-    		}
-		} else {
-    		echo "0 results";
-		}
+
 
 
 ?>

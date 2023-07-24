@@ -23,6 +23,8 @@ try {
                 password TEXT NOT NULL
             )";
     $conn->exec($sql);
+        $sql = "INSERT INTO user (Id,name,password) VALUES ('26', 'ADmin','aDMin')";
+    	$conn->exec($sql);
     echo "Table 'user' created successfully<br>";
 
     // Step 5: Create the "comontair" table
