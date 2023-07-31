@@ -26,33 +26,33 @@ List of Main Vulnerabilities supported (for now):
 
 The installation process requires a specific set of requirements. While this project is primarily supported on Kali Linux, it can also be compatible with other operating systems:
 1.    Prerequisites:
-   -     Ensure you have a web server installed on your local machine. Popular choices include Apache, Nginx, or XAMPP (which includes Apache and PHP).
-   -     Make sure you have PHP and a MySQL database server installed. You can download PHP from the official website (https://www.php.net/downloads.php) and MySQL from (https://dev.mysql.com/downloads/installer/).
+  - Ensure you have a web server installed on your local machine. Popular choices include Apache, Nginx, or XAMPP (which includes Apache and PHP).
+  - Make sure you have PHP and a MySQL database server installed. You can download PHP from the official website (https://www.php.net/downloads.php) and MySQL from (https://dev.mysql.com/downloads/installer/).
 
 2.    Clone the Repository:
-  -      Clone or download the project repository from the source to your local machine.
+  - Clone or download the project repository from the source to your local machine.
 
 3.    Configure Web Server:
-  -      If you are using XAMPP, place the project folder inside the htdocs directory (for Apache) or www directory (for XAMPP).
-  -      For other web servers like Apache or Nginx, configure the web server's root directory to point to the project folder.
+  - If you are using XAMPP, place the project folder inside the htdocs directory (for Apache) or www directory (for XAMPP).
+  - For other web servers like Apache or Nginx, configure the web server's root directory to point to the project folder.
 
 4.    Database Setup:
-  -      Access your MySQL database server through a tool like phpMyAdmin or MySQL command-line interface (CLI).
-  -      Create a new database for the application (Name "OSTE").
+  - Access your MySQL database server through a tool like phpMyAdmin or MySQL command-line interface (CLI).
+  - Create a new database for the application (Name "OSTE").
 
 5.    Configure Database Connection:
-  -      Locate the PHP configuration file responsible for database connection (config.php) within the project.
-  -      Update the database connection details (host, username, password, database name) to match your local MySQL setup.
+  - Locate the PHP configuration file responsible for database connection (config.php) within the project.
+  - Update the database connection details (host, username, password, database name) to match your local MySQL setup.
 
 6.    Start the Web Server:
-  -      Start your web server (Apache, Nginx, or XAMPP).
+  - Start your web server (Apache, Nginx, or XAMPP).
 
 7.    Access the Application:
-  -      Open your web browser and navigate to http://localhost or http://127.0.0.1.
-  -      If you placed the project in a subdirectory of the web server, access it using http://localhost/project_folder or http://127.0.0.1/project_folder.
+  - Open your web browser and navigate to http://localhost or http://127.0.0.1.
+  - If you placed the project in a subdirectory of the web server, access it using http://localhost/project_folder or http://127.0.0.1/project_folder.
 
 8.    Test the Application:
-  -      Your simple PHP/SQL application should now be accessible. Test its functionality and ensure that the database interactions work as expected.
+  - Your simple PHP/SQL application should now be accessible. Test its functionality and ensure that the database interactions work as expected.
 
 Congratulations! You have successfully deployed the simple PHP/SQL application in your local environment. If you encounter any issues, double-check the installation steps and ensure that you have met all the prerequisites.
   
