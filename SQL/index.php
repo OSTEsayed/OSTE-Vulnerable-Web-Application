@@ -152,9 +152,6 @@
         <button class="button" onclick="location.href='page3.php';">SQL page 3</button>
         <button class="button" onclick="location.href='page4.php';">SQL page 4</button>
         <button class="button" onclick="location.href='page5.php';">SQL page 5</button>
-        <button class="button" onclick="location.href='page6.php';">SQL page 6</button>
-        <button class="button" onclick="location.href='page7.php';">SQL page 7</button>
-        <button class="button" onclick="location.href='page8.php';">SQL page 8</button>
 
     </div>
 

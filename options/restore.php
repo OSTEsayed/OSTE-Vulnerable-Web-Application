@@ -13,7 +13,7 @@ try {
     $conn->exec($sql);
     $sql = "CREATE DATABASE IF NOT EXISTS OSTE";
     $conn->exec($sql);
-    echo "Database created successfully<br>";
+  //  echo "Database created successfully<br>";
 
     // Step 3: Switch to the "OSTE" database
     $conn->exec("USE OSTE");
@@ -27,7 +27,7 @@ try {
     $conn->exec($sql);
         $sql = "INSERT INTO user (Id,name,password) VALUES ('26', 'ADmin','aDMin')";
     	$conn->exec($sql);
-    echo "Table 'user' created successfully<br>";
+    //echo "Table 'user' created successfully<br>";
 
     // Step 5: Create the "comontair" table
     $sql = "CREATE TABLE IF NOT EXISTS comontair (
@@ -35,7 +35,7 @@ try {
                 msg TEXT NOT NULL
             )";
     $conn->exec($sql);
-    echo "Table 'comontair' created successfully<br>";
+//    echo "Table 'comontair' created successfully<br>";
 
     $sql = "CREATE TABLE IF NOT EXISTS books (
                 Id INT AUTO_INCREMENT PRIMARY KEY,
@@ -44,14 +44,14 @@ try {
                 year INT NOT NULL
             )";
     $conn->exec($sql);
-    echo "Table 'books' created successfully<br>";
+  //  echo "Table 'books' created successfully<br>";
 
     $sql = "CREATE TABLE IF NOT EXISTS sport (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 name TEXT NOT NULL
             )";
     $conn->exec($sql);
-    echo "Table 'sport' created successfully<br>";
+    //echo "Table 'sport' created successfully<br>";
 
 
     $booksData = array(
@@ -77,7 +77,7 @@ try {
         $stmt->bindParam(':year', $data[2], PDO::PARAM_STR);
         $stmt->execute();
     }
-        echo "books 'inserted successfully<br>";
+      //  echo "books 'inserted successfully<br>";
 $sportsData = array(
     "Football",
     "Basketball",
@@ -117,8 +117,8 @@ $sportsData = array(
         $stmt->bindParam(':name', $data, PDO::PARAM_STR);
         $stmt->execute();
     }
-        echo "books 'inserted successfully<br>";
-
+//        echo "books 'inserted successfully<br>";
+echo "DATA RESTORED and history cleared";
 
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();

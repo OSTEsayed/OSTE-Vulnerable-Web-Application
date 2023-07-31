@@ -181,24 +181,8 @@
             <li><a href="../database.php">Database</a></li>
             <li><a href="../vulnerabilities.php">Vulnerabilities</a></li>
         </ul>
-    </header>
-
-    <h1>Greetings, Welcome to the database <3 insert your info</h1>
-    <div class="button-container">
-        <form method="post" action="">
-        <label for="inputField">Your name?:*</label>
-        <input type="text" id="inputField2" name="username" required>
-        <label for="inputField2">Your password?:*</label>
-        <input type="text" id="inputField" name="pswd" required>
-
-        <button type="submit" name="sub">Submit</button>
-        </form>
-        <form method="post" action="">
-        <button type="submit" name="clear">Clear History</button>
-    </form>
-    </div>
-<?php
-
+        <?php
+        
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -208,21 +192,31 @@
 	if (!$conn) {
     	die("Connection failed: " . mysqli_connect_error());
 	} 
+         $x= rand(1,10);
+        
+        
+        
+        ?>
+    </header>
+
+    <h1>Greetings, are you a book reader ? give me the author and and i give you a book: <3 </h1>
+    			
+    <div class="button-container">
+        <form method="post" action="">
+        <label for="inputField">Author:*</label>
+        <input type="text" id="inputField2" name="username" required>
+        <button type="submit" name="sub">Submit</button>
+        </form>
+
+    </form>
+    </div>
+<?php
+
   if(isset($_POST["sub"])){
     $namee=$_POST["username"];
-    $passe=$_POST["pswd"];
     // Step 2: Fetch messages from the "comontair" table
-    $sql = "INSERT INTO user (name,password) VALUES ('$namee','$passe')";
-	$result = mysqli_query($conn,$sql);
-}
 
-if(isset($_POST['clear'])){
-	$sql1 = "DELETE FROM user";
-	$result = mysqli_query($conn,$sql1);
-	include '../options/restore.php';
-}
-
-$sql3 = "SELECT name FROM user";//String
+$sql3 = "SELECT * FROM books WHERE author='$namee'";//String
 		$result = mysqli_query($conn,$sql3);
 		
 		if (mysqli_num_rows($result) > 0) {
@@ -235,6 +229,7 @@ $sql3 = "SELECT name FROM user";//String
     		echo "0 results";
 		}
 
+}
 
 ?>
 
