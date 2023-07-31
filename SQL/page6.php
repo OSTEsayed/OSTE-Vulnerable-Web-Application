@@ -182,11 +182,7 @@
             <li><a href="../vulnerabilities.php">Vulnerabilities</a></li>
         </ul>
         <?php
-        
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname="OSTE";
+          require '../options/config.php';
     // Step 1: Connect to MySQL
     $conn = mysqli_connect($servername, $username, $password,$dbname);
 	if (!$conn) {

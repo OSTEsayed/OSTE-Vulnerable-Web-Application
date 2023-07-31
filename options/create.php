@@ -1,8 +1,5 @@
 <?php
-$servername = "127.0.0.1";
-$username = "root";
-$password = "";
-
+  require 'config.php';
 try {
     // Step 1: Connect to MySQL
     $conn = new PDO("mysql:host=$servername", $username, $password);
