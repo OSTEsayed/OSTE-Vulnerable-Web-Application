@@ -1,5 +1,5 @@
 
-# OSTE-Meta-Scanner
+# OSTE-Vulnerable-Web-Application
 ![Project Logo](OSTE.svg)
 This project has a No malicious intent purpose. First, it aims to be one of the initial steps in creating an innovative web penetration tester. Second, it seeks to evaluate Dynamic Application Security Testing (DAST) tools. To achieve this, the project utilizes the OSTE vulnerable web application. This application is built using SQL and PHP and intentionally includes multiple points of vulnerability, which allows for comprehensive testing and analysis. By doing so, it aims to improve web security and make online platforms safer for users.
 ## Table of Contents
