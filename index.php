@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="google-site-verification" content="34wOCPeSUvPzWAd6PjBImav-hV4ppzQZM2cpUGq5cvM" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OSTE Vulnerable Web Application</title>
     <style>
